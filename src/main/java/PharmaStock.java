@@ -1,36 +1,72 @@
+
+
+
+
+package com.mycompany.groupproject;
+import java.time.LocalDate;
 import java.util.ArrayList;
+
 public class PharmaStock {
 
-    private Medicine[] products;
-    private boolean onOrderFlag;
-    private int quantityInStock;
-    private int reorderLevel;
+    private ArrayList<Medicine> products;
 
-    //No Argument Constructor
-    public PharmaStock(Medicine[] products) {
-        this.products = products;
-        this.onOrderFlag = false;
-        this.quantityInStock = 0;
-        this.reorderLevel = 0;
+    //Static counter shared by all PharmaStock objects
+    private static int nextId = 1;
+
+    public PharmaStock() {
+        products = new ArrayList<>();
     }
-    public static void add(Medicine[] products) {
-
+    public void add(Medicine m) {
+        if (m != null) products.add(m);
     }
-    findMedicine(medicine[] products) {
-
-    }
-
-    findExpensive() {
-
-    }
-
-    findCheapest() {
-
-    }
-
-    abstract class createOrders (boolean onOrderFlag, int quantityInStock, int reorderLevel) {
-        if (onOrderFlag == false && quantityInStock <= reorderLevel) {
-            return false;
+    public Medicine findMedicine(String name) {
+        for (Medicine m : products) {
+            if (m.getMedicineName().equalsIgnoreCase(name))  {
+                return m;
+            }
         }
+        return null;
+    }
+    public String findExpensive() {
+        if (products.isEmpty()) return null;
+
+        Medicine expensive = products.get(0);
+        for (Medicine m : products) {
+            if (m.getUnitCostPrice() > expensive.getUnitCostPrice()) {
+                expensive = m;
+            }
+        }
+        return expensive.getMedicineName();
+
+    }
+
+    public Medicine findCheapest() {
+        if (products.isEmpty()) return null;
+
+        Medicine cheapest = products.get(0);
+        for (Medicine m : products) {
+            if (m.getUnitCostPrice() < cheapest.getUnitCostPrice()) {
+                cheapest = m;
+            }
+        }
+        return cheapest;
+    }
+
+    public ArrayList<PharmaOrder> createOrders () {
+        ArrayList<PharmaOrder> orders = new ArrayList<>();
+
+        for (Medicine m : products) {
+            if (!m.isOnOrderFlag() && m.getQuantityInStock() <= m.getReorderLevel()) {
+
+                String id = "ORD" + nextId;   // use static counter
+                nextId++;                     // increase share counter
+
+                PharmaOrder order = new PharmaOrder(m, LocalDate.now(), m.getReorderQuantity(), id);
+                orders.add(order);
+
+                m.setOnOrderFlag(true);
+            }
+        }
+        return orders;
     }
 }

@@ -80,7 +80,6 @@ public class Medicine {
         quantityInStock += quantity;
         return true;
     }
-}
 
 //Decrease stock
 public boolean decreaseStock(int quantity) {
@@ -100,5 +99,4 @@ public String toString() {
             ", Unit Cost: " + unitCostPrice +
             ", Supplier: " + s;
 }
-
 }

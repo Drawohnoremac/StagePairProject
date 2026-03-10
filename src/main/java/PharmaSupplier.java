@@ -24,7 +24,6 @@ public class PharmaSupplier {
     public String getSupplierName() {
         return supplierName;
     }
-
     public void setSupplierName(String supplierName) {
         this.supplierName = supplierName;
     }
@@ -32,7 +31,6 @@ public class PharmaSupplier {
     public String getSupplierAddress() {
         return supplierAddress;
     }
-
     public void setSupplierAddress(String supplierAddress) {
         this.supplierAddress = supplierAddress;
     }
@@ -40,7 +38,6 @@ public class PharmaSupplier {
     public double getAmountOwed() {
         return amountOwed;
     }
-
     public void setAmountOwed(double amountOwed) {
         this.amountOwed = amountOwed;
     }
@@ -48,7 +45,6 @@ public class PharmaSupplier {
     public double getCreditLimit() {
         return creditLimit;
     }
-
     public void setCreditLimit(double creditLimit) {
         this.creditLimit = creditLimit;
     }
@@ -66,8 +62,8 @@ public class PharmaSupplier {
         return false;
     }
 
+    //Decrease amount owed
     public boolean decreaseAmountOwed(double amount) {
-
         if (amount <= 0) return false;
 
         double newAmount =  amountOwed - amount;

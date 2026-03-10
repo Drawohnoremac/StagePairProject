@@ -42,7 +42,7 @@ public class MedicineDelivery {
     //Override the toString() method
     @Override
     public String toString() {
-        return "Delivery of " +  medicineRef.getMedicineName;
+        return "Delivery of " +  medicineRef.getMedicineName() +
                " on " + deliveryDate +
                "Qty: " + quantityDelivered +
                 "Cost: " + calculateDeliveryCost();

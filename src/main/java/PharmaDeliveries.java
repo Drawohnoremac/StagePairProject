@@ -1,35 +1,57 @@
+package com.mycompany.groupproject;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
-
-ArrayList<String> inComing = new ArrayList<>();
-inComing.add(16/01/2026);
-inComing.add(17/02/2026);
-inComing.add(31/12/2025);
-inComing.add(01/01/2026);
 
 public class PharmaDeliveries {
+    private ArrayList<MedicineDelivery> inComing;
 
-    private String medicineName;
-    private Medicine medicineRef;
-    private LocalDate deliveryDate;
-    private int quantityDelivered;
-
-    public static LocalDate addDelivery(LocalDate deliveryDate) {
-        String newArray[] = medicineName + inComing;
-        return newArray;
+    //Constructor
+    public PharmaDeliveries() {
+        inComing = new ArrayList<>();
     }
 
-    public static String findAllDeliveries() {
-        return newArray.length;
+    // Add a delivery
+    public void addDelivery(MedicineDelivery d) {
+        if (d!= null) inComing.add(d);
     }
 
-    public static String findAllDeliveries() {
-        return inComing;
+    //Find deliveries by date
+    public ArrayList<MedicineDelivery> findAllDeliveries(LocalDate date) {
+        ArrayList<MedicineDelivery> deliveries = new ArrayList<>();
+        for (MedicineDelivery d: inComing) {
+            if (d.getDelivery().equals(date)) {
+                list.add(d);
+            }
+        }
+        return list;
     }
 
-    public static String deleteDeliveries() {
-        String newArray[] = medicineName - inComing;
-        return newArray;
+    //Find deliveries by medicine name
+    public ArrayList<MedicineDelivery> findAllDeliveries(String name) {
+        ArrayList<MedicineDelivery> list = new ArrayList<>();
+        for (MedicineDelivery d : inComing) {
+            if (d.getMedicineRef().getMedicineName().equalsIgnoreCase(name)) {
+                list.add(d);
+            }
+        }
+        return list;
+    }
+
+    //Delete deliveries from a supplier
+    public int deleteDeliveries(String supplierName) {
+        int count = 0;
+
+        for (int i = 0; i < inComing.size(); i++) {
+            MedicineDelivery d = inComing.get(i);
+            String sName = d.getMedicineRef().getSupplierRef().getSupplierName;
+
+            if (sName.equalsIgnoreCase(supplierName)) {
+                inComing.remove(i);
+                i--;
+                count++;
+            }
+        }
+
+        return count;
     }
 }
