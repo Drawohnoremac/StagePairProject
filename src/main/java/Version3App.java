@@ -2,14 +2,15 @@ package com.mycompany.groupproject;
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 public class Version3App {
 
     //No argument constructor
     com.mycompany.groupproject.PharmaSupplierCollection group1() {
-        ArrayList<com.mycompany.groupproject.PharmaSupplierCollection> suppliers = new ArrayList<>();
 
     }
 
@@ -21,21 +22,19 @@ public class Version3App {
 
     public static void main(String[] args) {
         try (com.mycompany.groupproject.PharmaSupplierCollection suppliers = new com.mycompany.groupproject.PharmaSupplierCollection("suppliers.txt")) {
-            suppliers = new ArrayList<>();
+
+            if {
+
+            }
+
+            else {
+
+            }
         }
 
         catch (Exception e) {
-
-        }
-
-        static void add() {
-        System.out.println("suppliers.txt");
-        }
-
-        add();
-
-        public displayAll()  {
-
+             System.out.println("An error occurred.");
+             e.printStackTrace();
         }
     }
 }
