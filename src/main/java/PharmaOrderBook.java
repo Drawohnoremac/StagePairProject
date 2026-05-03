@@ -29,4 +29,14 @@ public class PharmaOrderBook {
     return text;
     }
 
+    public double calcOrderCost (String orderId, double unitCostPrice) {
+        if  (unitCostPrice >= orderValueForDiscount) {
+            unitCostPrice
+            return unitCostPrice;
+        }
+
+        else {
+            return unitCostPrice;
+        }
+    }
 }

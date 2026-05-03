@@ -69,4 +69,16 @@ public class PharmaStock {
         }
         return orders;
     }
+
+    public displayByName() {
+
+    }
+
+    public displayByQty() {
+
+    }
+
+    public createSupplierMap() {
+
+    }
 }
